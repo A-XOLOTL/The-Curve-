@@ -1,0 +1,3 @@
+npm init --y // to initialize te mode package.json file
+npm i express// to add express dependencies
+npm i -D nodemon // to create the nodemon file
