@@ -108,7 +108,8 @@ app.get('/rigged/:state',async(req,res)=>{
 app.get('/election/:state',async(req,res)=>{
   try {
     const result =  await electionModel.find({state: req.params.state});
-    const winnerst = result[0]
+ 
+    console.log(typeof(result))
           res.status(200).json({
             message:"success",
             data:[winnerst]

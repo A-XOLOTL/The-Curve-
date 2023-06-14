@@ -22,7 +22,7 @@ const database = [
         taskName: "buy fish",
         Location: "end of street",
         date:"2023, 06, 01",
-        reminder:5,
+        reminder:4,
         status:"true"
     }
 ]
@@ -30,6 +30,24 @@ const database = [
 app.get('/',(req, res)=>{
     res.send("Welcome to my To Do List App")
 })
+function wapp(){
+    const data =  database.find(reminder);
+
+    let maxkey = null;
+    let maxvalue = -Infinity
+    for(const [key,value] of Object.entries(data)){
+        if(maxvalue<value){
+            maxkey = key;
+            maxvalue = value;
+        }
+
+    }
+    console.log(maxkey, maxvalue)
+    // res.status(200).json({
+    //     message:`${maxkey} is the oldest with age ${maxvalue}  `
+    // })
+}
+wapp()
 
 //all list
 app.get('/lists',(req, res)=>{

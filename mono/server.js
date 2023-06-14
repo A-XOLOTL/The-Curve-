@@ -56,6 +56,24 @@ app.get('/student/:id', async(req,res)=>{
     }
 })
 
+app.get("/oldest", async(req,res)=>{
+    const data = await studentModel.find();
+
+    let maxkey = null;
+    let maxvalue = -Infinity
+    for(const [key,value] of Object.entries(data)){
+        if(maxvalue<value){
+            maxkey = key;
+            maxvalue = value;
+        }
+
+    }
+    console.log(maxkey, maxvalue)
+    // res.status(200).json({
+    //     message:`${maxkey} is the oldest with age ${maxvalue}  `
+    // })
+})
+
 app.listen(port,()=>{
     console.log(`listening on ${port}`);
 })
