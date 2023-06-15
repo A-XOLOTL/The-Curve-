@@ -1,11 +1,11 @@
 const {Router} = require('express');
 const path = require('path');
-const {newUser} = require('../Controller/profileController');
+const familyController= require('../Controller/famController');
 const router = Router();
 const multer = require('multer');
 const uploadedImage = multer(
     {
-        dest: 'images/',
+        dest: 'famimages/',
         limits:{fileSize:10000000},
         fileFilter: (req,files,cb)=>{   
             const fileExt = path.extname(files.originalname);
@@ -13,14 +13,13 @@ const uploadedImage = multer(
                 cb(null,true)
             }else{new Error("wrong format"),false}
         }
-    }).array("picture",5);
+    });
 
 
-router.post("/user", uploadedImage, newUser);
-// router.get("/restaurant/:branch", getOneBranch);
-// router.get("/restaurants", getAllBranches);
-// router.get("/restaurant/:branch/:type", getOneMealType);
-// router.put("/restaurant/:branch", updateMenu);
-// router.delete("/patient/:id",deletePatient);
+router.post("api/fam", uploadedImage.array("childrenPic",3) ,  familyController.newFam);
+router.get("api/fam/:id",  familyController.getOneFam);
+router.get("api/fams",  familyController.getAllFam); 
+router.put("api/fam/:id",uploadedImage.array("childrenPic",3),  familyController.updateFam);
+router.delete("api/fam/:id", familyController.deleteFam);
 
 module.exports = router;
