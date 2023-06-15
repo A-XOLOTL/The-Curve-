@@ -16,10 +16,10 @@ const uploadedImage = multer(
     });
 
 
-router.post("api/fam", uploadedImage.array("childrenPic",3) ,  familyController.newFam);
-router.get("api/fam/:id",  familyController.getOneFam);
-router.get("api/fams",  familyController.getAllFam); 
-router.put("api/fam/:id",uploadedImage.array("childrenPic",3),  familyController.updateFam);
-router.delete("api/fam/:id", familyController.deleteFam);
+router.post("/fam", uploadedImage.array("childrenPic",3) ,  familyController.newFam);
+// router.get("/fam/:id",  familyController.getOneFam);
+// router.get("/fams",  familyController.getAllFam); 
+// router.put("/fam/:id",uploadedImage.array("childrenPic",3),  familyController.updateFam);
+// router.delete("/fam/:id", familyController.deleteFam);
 
 module.exports = router;
