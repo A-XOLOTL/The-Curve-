@@ -104,7 +104,7 @@ exports.deleteFam = async(req, res) => {
       }
     }
 
-module.exports = { deleteFam, getOneFam, getAllFam, updateFam, newFam}
+// module.exports = { deleteFam, getOneFam, getAllFam, updateFam, newFam}
 
 
 
